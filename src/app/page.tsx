@@ -1,6 +1,7 @@
 "use client";
 
 import { CardProfile } from "@/components/layout/card-profile";
+import { ReposCardList } from "@/components/layout/repos-card-list";
 import { useGithubProfile } from "@/hooks/use-github-profile";
 
 export default function Home() {
@@ -10,6 +11,7 @@ export default function Home() {
   if (isError) return <p>Error ao carregar dados!</p>;
 
   return (
+    <div>
     <CardProfile.Root>
       <CardProfile.Avatar url={data.avatar_url} />
       <CardProfile.Bio name={data.name} bio={data.bio} />
@@ -20,5 +22,7 @@ export default function Home() {
         socials={data.social_accounts}
       />
     </CardProfile.Root>
+    <ReposCardList />
+    </div>
   );
 }
