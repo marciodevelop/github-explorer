@@ -6,7 +6,7 @@ import { Header } from "@/components/layout/header";
 
 const roboto = Roboto({
   subsets: ["latin"],
-  weight: ["300", "400"],
+  weight: ["300", "400", "700"],
   variable: "--font-roboto",
 })
 
@@ -27,7 +27,7 @@ export default function RootLayout({
       >
           <Providers>
             <Header />
-            <main className="mx-auto max-w-317.25 px-4">
+            <main className="mx-auto max-w-317.25 px-4 py-12">
               {children}
             </main>
           </Providers>
