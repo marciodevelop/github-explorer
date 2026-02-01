@@ -38,7 +38,7 @@ export default function Home() {
             <TabsTrigger className="text-lg gap-3" value="starred">
               <Star size={24} />
               Starred
-              <div className="w-10 h-6 bg-[#F8F8F8] rounded-[59px] border border-[##DBDBDB] text-sm text-[#989898]">
+              <div className="w-10 h-6 bg-[#F8F8F8] rounded-[59px] border border-[#DBDBDB] text-sm text-[#989898]">
                 24
               </div>
             </TabsTrigger>
