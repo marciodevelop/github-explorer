@@ -7,7 +7,7 @@ type FilterStoreTypes = {
   setSearch: (tab: TabsTypes) => void
 }
 
-export const filtersStore = create<FilterStoreTypes>((set, get) => ({
+export const tabsColtrolStore = create<FilterStoreTypes>((set, get) => ({
   activeTab: "repositories",
   setSearch: (activeTab) => set({ activeTab }),
 }))

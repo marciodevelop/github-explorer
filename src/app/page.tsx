@@ -26,7 +26,7 @@ export default function Home() {
         />
       </CardProfile.Root>
       <div className="flex w-full justify-center md:justify-start xl:justify-start">
-        <Tabs className="w-102 h-10">
+        <Tabs defaultValue="repositories" className="w-102 h-10">
           <TabsList className="w-full flex justify-between" variant="line">
             <TabsTrigger className="text-lg gap-3" value="repositories">
               <BookMarked size={24} />
