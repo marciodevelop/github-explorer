@@ -1,4 +1,6 @@
 declare namespace GithubTypes {
+    type TypeRepoTypes = "all" | 'sources' | "forks" | "archived" | "mirros" | null
+
     interface IRepo {
         id: number,
         name: string,
