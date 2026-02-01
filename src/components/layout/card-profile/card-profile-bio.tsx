@@ -8,7 +8,7 @@ export function CardProfileBio(props: ICardProfileBioProps) {
   const { name, bio } = props;
 
   return (
-    <div className="flex flex-col gap-2">
+    <div className="flex flex-col gap-2 items-center">
       <p className="text-[#262626] text-xl font-bold">{name}</p>
       <span className="text-[#989898] text-sm text-center font-medium">{bio}</span>
     </div>

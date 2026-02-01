@@ -13,7 +13,7 @@ export default function Home() {
   if (isError) return <p>Error ao carregar dados!</p>;
 
   return (
-    <section className="flex flex-col items-center gap-30 xl:flex-row md:flex-row xl:items-start md:items-start">
+    <section className="flex flex-col items-center gap-10 md:gap-30 xl:gap-30 xl:flex-row md:flex-row xl:items-start md:items-start">
       <CardProfile.Root>
         <CardProfile.Avatar url={data.avatar_url} />
         <CardProfile.Bio name={data.name} bio={data.bio} />
