@@ -1,6 +1,7 @@
 "use client";
 
 import { CardProfile } from "@/components/layout/card-profile";
+import { ReposSearchInput } from "@/components/layout/repos-search-input";
 import { ReposCardList } from "@/components/layout/repos-card-list";
 import { Tabs, TabsTrigger, TabsList, TabsContent } from "@/components/ui/tabs";
 import { useGithubProfile } from "@/hooks/use-github-profile";
@@ -42,6 +43,9 @@ export default function Home() {
               </div>
             </TabsTrigger>
           </TabsList>
+          <TabsContent value="repositories">
+            <ReposSearchInput />
+          </TabsContent>
         </Tabs>
       </div>
     </section>
