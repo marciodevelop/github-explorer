@@ -1,6 +1,6 @@
 import { create } from 'zustand'
 
-type FilterStoreType {
+type FilterStoreType = {
   search: string
   setSearch: (search: string) => void
 }
