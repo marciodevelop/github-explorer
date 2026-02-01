@@ -2,29 +2,26 @@ import { create } from 'zustand'
 
 type FilterStoreTypes = {
   search: string
-  type: GithubTypes.TypeRepoTypes
-  language: string | null
+  types: string[],
+  languages: string[]
   setSearch: (search: string) => void
-  setType: (value: GithubTypes.TypeRepoTypes) => void
-  setlanguage: (language: string | null) => void
+  setTypes: (types: string[]) => void
+  setLanguages: (language: string[]) => void
   resetFilter: () => void
-  setUrlParams: (data: Partial<FilterStoreTypes>) => void
 }
 
-export const filtersStore = create<FilterStoreTypes>((set, _) => ({
+export const filtersStore = create<FilterStoreTypes>((set) => ({
   search: "",
-  type: null,
-  language: null,
+  types: [],
+  languages: [],
 
   setSearch: (search) => set({ search }),
-  setType: (type) => set({ type }),
-  setlanguage: (language) => set({ language }),
-
-  setUrlParams: (data) => set(data),
+  setTypes: (types) => set({ types }),
+  setLanguages: (languages) => set({ languages }),
 
   resetFilter: () => set({
     search: "",
-    type: null,
-    language: null
+    types: [],
+    languages: []
   })
 }))
