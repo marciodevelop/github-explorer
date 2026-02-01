@@ -13,13 +13,13 @@ export default function Home() {
   return (
     <section className="flex flex-col items-center gap-10 md:gap-30 xl:gap-30 xl:flex-row md:flex-row xl:items-start md:items-start">
       <CardProfile.Root>
-        <CardProfile.Avatar url={data.avatar_url} />
-        <CardProfile.Bio name={data.name} bio={data.bio} />
+        <CardProfile.Avatar url={data?.avatar_url} />
+        <CardProfile.Bio name={data?.name} bio={data.bio} />
         <CardProfile.Infos
-          company={data.company}
-          location={data.location}
-          blog={data.blog}
-          socials={data.social_accounts}
+          company={data?.company}
+          location={data?.location}
+          blog={data?.blog}
+          socials={data?.social_accounts}
         />
       </CardProfile.Root>
       <div className="flex w-full justify-center md:justify-start xl:justify-start">

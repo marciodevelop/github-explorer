@@ -43,3 +43,31 @@ export async function getUserRepos(
     throw error;
   }
 }
+
+export async function getUserStarred(
+  username: string,
+): Promise<GithubTypes.IRepo[]> {
+  try {
+    const response = await fetch(
+      `${BASE_URL}/users/${username}/starred?per_page=100`,
+    );
+
+    return handleReponse<GithubTypes.IRepo[]>(response);
+  } catch (error) {
+    throw error;
+  }
+}
+
+export async function getRepoDetails(
+  fullName: string,
+): Promise<GithubTypes.IRepo[]> {
+  try {
+    const response = await fetch(
+      `${BASE_URL}/repos/${fullName}`,
+    );
+
+    return handleReponse<GithubTypes.IRepo[]>(response);
+  } catch (error) {
+    throw error;
+  }
+}
