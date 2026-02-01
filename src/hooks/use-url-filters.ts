@@ -37,6 +37,10 @@ export function useUrlFilter() {
       type,
     })
 
-    replace(`?${queryString}`, { scroll: false })
-  }, [language, search, type, replace])
+    const currentParams = searchParams.toString()
+
+    if(currentParams !== queryString) {
+      replace(`?${queryString}`, { scroll: false })
+    }
+  }, [language, search, type, replace, searchParams])
 }
