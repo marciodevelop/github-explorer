@@ -6,68 +6,44 @@ async function handleReponse<T>(response: Response): Promise<T> {
   return response.json();
 }
 
-export async function getUser(username: string): Promise<GithubTypes.IRepo[]> {
-  try {
-    const response = await fetch(`${BASE_URL}/users/${username}`);
+export async function getUser(username: string): Promise<GithubTypes.User> {
+  const response = await fetch(`${BASE_URL}/users/${username}`);
 
-    return handleReponse<GithubTypes.IRepo[]>(response);
-  } catch (error) {
-    throw error;
-  }
+  return handleReponse<GithubTypes.User>(response);
 }
 
 export async function getUserSocialAccounts(
   username: string,
-): Promise<GithubTypes.IRepo[]> {
-  try {
-    const response = await fetch(
-      `${BASE_URL}/users/${username}/social_accounts`,
-    );
+): Promise<GithubTypes.SocialAccount[]> {
+  const response = await fetch(`${BASE_URL}/users/${username}/social_accounts`);
 
-    return handleReponse<GithubTypes.IRepo[]>(response);
-  } catch (error) {
-    throw error;
-  }
+  return handleReponse<GithubTypes.SocialAccount[]>(response);
 }
 
 export async function getUserRepos(
   username: string,
-): Promise<GithubTypes.IRepo[]> {
-  try {
-    const response = await fetch(
-      `${BASE_URL}/users/${username}/repos?per_page=100`,
-    );
+): Promise<GithubTypes.Repo[]> {
+  const response = await fetch(
+    `${BASE_URL}/users/${username}/repos?per_page=100`,
+  );
 
-    return handleReponse<GithubTypes.IRepo[]>(response);
-  } catch (error) {
-    throw error;
-  }
+  return handleReponse<GithubTypes.Repo[]>(response);
 }
 
-export async function getUserStarred(
+export async function getUserStarredRepos(
   username: string,
-): Promise<GithubTypes.IRepo[]> {
-  try {
-    const response = await fetch(
-      `${BASE_URL}/users/${username}/starred?per_page=100`,
-    );
+): Promise<GithubTypes.Repo[]> {
+  const response = await fetch(
+    `${BASE_URL}/users/${username}/starred?per_page=100`,
+  );
 
-    return handleReponse<GithubTypes.IRepo[]>(response);
-  } catch (error) {
-    throw error;
-  }
+  return handleReponse<GithubTypes.Repo[]>(response);
 }
 
 export async function getRepoDetails(
   fullName: string,
-): Promise<GithubTypes.IRepo[]> {
-  try {
-    const response = await fetch(
-      `${BASE_URL}/repos/${fullName}`,
-    );
+): Promise<GithubTypes.Repo[]> {
+  const response = await fetch(`${BASE_URL}/repos/${fullName}`);
 
-    return handleReponse<GithubTypes.IRepo[]>(response);
-  } catch (error) {
-    throw error;
-  }
+  return handleReponse<GithubTypes.Repo[]>(response);
 }

@@ -1,7 +1,7 @@
 
 interface ICardProfileBioProps {
-  name: string
-  bio: string
+  name: string | null
+  bio: string | null
 }
 
 export function CardProfileBio(props: ICardProfileBioProps) {

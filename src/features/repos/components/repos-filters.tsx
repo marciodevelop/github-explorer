@@ -14,11 +14,14 @@ const typeOptions = [
 ];
 
 const languageOptions = [
-  { value: "js", label: "JavaScript" },
-  { value: "go", label: "Go" },
-  { value: "php", label: "PHP" },
+  { value: "JavaScript", label: "JavaScript" },
+  { value: "Go", label: "Go" },
+  { value: "PHP", label: "PHP" },
   { value: "ruby", label: "Ruby" },
-  { value: "ts", label: "TypeScript" },
+  { value: "TypeScript", label: "TypeScript" },
+  { value: "HTML", label: "HTML" },
+  { value: "CSS", label: "CSS" },
+  { value: "Python", label: "Python" },
   { value: "c", label: "C" },
 ];
 
@@ -34,7 +37,7 @@ export function ReposFilters() {
   }, [setLanguages])
 
   return (
-    <div className="flex gap-2">
+    <div className="flex gap-2 absolute top-3 md:static">
       <CustomCombobox
         placeholder="Type"
         options={typeOptions}

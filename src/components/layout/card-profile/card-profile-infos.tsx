@@ -21,14 +21,14 @@ type SocialsTypes = {
 
 type InfoItemsTypes = {
   icon: ComponentType<{ size?: number }>;
-  value?: string;
+  value?: string | null;
   isLink: boolean;
 };
 
 interface ICardProfileInfosProps {
-  company?: string;
-  location?: string;
-  blog?: string;
+  company: string | null;
+  location: string | null;
+  blog: string | null;
   socials: SocialsTypes[];
 }
 
@@ -93,11 +93,18 @@ export function CardProfileInfos(props: ICardProfileInfosProps) {
 
   return (
     <>
-      <Collapsible open={isOpen} onOpenChange={setIsOpen} className="w-full xl:hidden">
+      <Collapsible
+        open={isOpen}
+        onOpenChange={setIsOpen}
+        className="w-full xl:hidden"
+      >
         <CollapsibleTrigger asChild>
           <button
+            type="button"
             className="w-full flex flex-col justify-center items-center text-sm text-[#0587FF]"
-            aria-label={isOpen ? "Esconder informações" : "Expandir informações"}
+            aria-label={
+              isOpen ? "Esconder informações" : "Expandir informações"
+            }
           >
             <p>Informações adicionais</p>
             {isOpen ? <ChevronUp /> : <ChevronDown />}
@@ -107,7 +114,9 @@ export function CardProfileInfos(props: ICardProfileInfosProps) {
           <InfoList />
         </CollapsibleContent>
       </Collapsible>
-      <div className="hidden xl:block"><InfoList /></div>
+      <div className="hidden xl:block">
+        <InfoList />
+      </div>
     </>
   );
 }

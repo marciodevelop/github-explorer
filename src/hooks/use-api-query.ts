@@ -1,13 +1,13 @@
 "use client"
 
-import { useQuery, type UseQueryOptions } from '@tanstack/react-query'
+import { type QueryKey, type UseQueryOptions, useQuery } from '@tanstack/react-query'
 
-type QueryFnType<T> = () => Promise<T>
+type QueryFnType<TQueryFnData> = () => Promise<TQueryFnData>
 
-export function useAPIQuery<T>(
-    queryKey: unknown[],
-    queryFn: QueryFnType<T>,
-    options?: Omit<UseQueryOptions<T>, 'queryKey' | 'queryFn'>
+export function useAPIQuery<TQueryFnData, TError = Error, TData = TQueryFnData, TQueryKey extends QueryKey = QueryKey>(
+    queryKey: TQueryKey,
+    queryFn: QueryFnType<TQueryFnData>,
+    options?: Omit<UseQueryOptions<TQueryFnData, TError, TData, TQueryKey>, 'queryKey' | 'queryFn'>
 ) {
     return useQuery({
         queryKey,
