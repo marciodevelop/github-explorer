@@ -1,25 +1,24 @@
+import { repoSelectedStore } from "@/store/repo-selected-store";
 import { GitFork } from "lucide-react";
 import Link from "next/link";
 
 interface IReposCardListProps {
-  name: string;
-  ownerName: string;
-  description: string;
-  language: string;
-  forkCount: number;
+  repo: GithubTypes.RepoSummary
 }
 
 export function ReposCardList(props: IReposCardListProps) {
-  const { description, forkCount, language, name, ownerName } = props;
+  const { description, forks_count: forkCount, language, name, owner } = props.repo;
 
-  const repoDetails = `/repository/${ownerName}/${name}`;
+  const { setSelectedRepo } = repoSelectedStore()
+
+  const repoDetails = `/repository/${owner.login}/${name}`;
 
   return (
-    <Link href={repoDetails}>
+    <Link href={repoDetails} onClick={() => setSelectedRepo(props.repo)}>
       <div className="flex flex-col gap-2.5 h-30.75 max-w-209.25 bg-transparent border-b border-[#F4F4F4]">
         <p className="text-[18px] font-light max-w-full truncate">
           <span className="truncate">
-            {ownerName} /{" "}
+            {owner.login} /{" "}
             <span className="font-semibold text-[#0587FF] truncate">
               {name}
             </span>

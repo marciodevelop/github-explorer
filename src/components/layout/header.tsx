@@ -4,12 +4,17 @@ import Link from "next/link";
 import Logo from "@/../public/logo.svg";
 import { usePathname, useRouter } from "next/navigation";
 import { ChevronLeft } from "lucide-react";
+import { repoSelectedStore } from "@/store/repo-selected-store";
 
 export function Header() {
   const { back } = useRouter();
+  const { clearSelectedRepo } = repoSelectedStore()
   const pathname = usePathname();
 
-  const handleBackPage = () => back();
+  const handleBackPage = () => {
+    back()
+    clearSelectedRepo()
+  };
 
   const isRepositoryPath = pathname.includes("repository");
 

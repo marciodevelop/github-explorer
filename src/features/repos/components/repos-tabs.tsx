@@ -9,11 +9,12 @@ import { EmptyState } from "@/components/layout/empty-state";
 import { tabsColtrolStore } from "@/store/tabs-control-store";
 
 export function ReposTabs() {
-  const { activeTab, setActiveTab } = tabsColtrolStore()
+  const { activeTab, setActiveTab } = tabsColtrolStore();
   const { data, isLoading } = useGithubRepos("marciodevelop");
   const { data: starredData, isLoading: isLoadingStarred } =
-    useGithubStarredRepos("marciodevelop", { enabled: activeTab === 'starred' });
-  
+    useGithubStarredRepos("marciodevelop", {
+      enabled: activeTab === "starred",
+    });
 
   const hasData = data.length > 0;
   const hasDataStarred = starredData.length > 0;
@@ -21,8 +22,15 @@ export function ReposTabs() {
   if (isLoading && isLoadingStarred) return <p>Carregando...</p>;
 
   return (
-    <Tabs defaultValue={activeTab} className="w-full" onValueChange={(tab) => setActiveTab(tab as GithubTypes.TabsTypes)}>
-      <TabsList className="w-full flex justify-center md:justify-start" variant="line">
+    <Tabs
+      defaultValue={activeTab}
+      className="w-full"
+      onValueChange={(tab) => setActiveTab(tab as GithubTypes.TabsTypes)}
+    >
+      <TabsList
+        className="w-full flex justify-center md:justify-start"
+        variant="line"
+      >
         <TabsTrigger
           className="text-lg gap-3 max-w-49 h-10"
           value="repositories"
@@ -46,18 +54,9 @@ export function ReposTabs() {
       <TabsContent className="w-full" value="repositories">
         {hasData ? (
           <div className="flex flex-col gap-10 mt-5">
-            {data.map(
-              ({ id, name, description, forks_count, language, owner }) => (
-                <ReposCardList
-                  key={id}
-                  name={name}
-                  description={description}
-                  forkCount={forks_count}
-                  language={language}
-                  ownerName={owner.login}
-                />
-              ),
-            )}
+            {data.map((repo) => (
+              <ReposCardList key={repo.id} repo={repo} />
+            ))}
           </div>
         ) : (
           <EmptyState message="Nenhum dado foi encontrado" description="" />
@@ -66,18 +65,9 @@ export function ReposTabs() {
       <TabsContent className="w-full" value="starred">
         {hasDataStarred ? (
           <div className="flex flex-col gap-10 mt-5">
-            {starredData.map(
-              ({ id, name, description, forks_count, language, owner }) => (
-                <ReposCardList
-                  key={id}
-                  name={name}
-                  description={description}
-                  forkCount={forks_count}
-                  language={language}
-                  ownerName={owner.login}
-                />
-              ),
-            )}
+            {starredData.map((repo) => (
+              <ReposCardList key={repo.id} repo={repo} />
+            ))}
           </div>
         ) : (
           <EmptyState message="Nenhum dado foi encontrado" description="" />

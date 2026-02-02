@@ -43,8 +43,8 @@ export async function getUserStarredRepos(
 export async function getRepoIssues(
   owner: string,
   repoName: string
-): Promise<GithubTypes.Repo[]> {
+): Promise<GithubTypes.Issue[]> {
   const response = await fetch(`${BASE_URL}/repos/${owner}/${repoName}/issues`);
 
-  return handleReponse<GithubTypes.Repo[]>(response);
+  return handleReponse<GithubTypes.Issue[]>(response);
 }
