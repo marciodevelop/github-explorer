@@ -7,12 +7,14 @@ import { useGithubStarredRepos } from "@/hooks/use-github-starred-repos";
 import { ReposCardList } from "@/components/layout/repos-card-list";
 import { EmptyState } from "@/components/layout/empty-state";
 import { tabsColtrolStore } from "@/store/tabs-control-store";
+import { userNameStore } from "@/store/user-name-store";
 
 export function ReposTabs() {
   const { activeTab, setActiveTab } = tabsColtrolStore();
-  const { data, isLoading } = useGithubRepos("marciodevelop");
+  const { userName } = userNameStore();
+  const { data, isLoading } = useGithubRepos(userName);
   const { data: starredData, isLoading: isLoadingStarred } =
-    useGithubStarredRepos("marciodevelop", {
+    useGithubStarredRepos(userName, {
       enabled: activeTab === "starred",
     });
 
