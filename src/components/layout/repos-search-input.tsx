@@ -16,7 +16,7 @@ export function ReposSearchInput(props: ComponentProps<"input">) {
           if(event.key === 'Enter') apllySearch()
         }}
         placeholder="Search here"
-        className="border-0 bg-[#F8F8F8] h-14 rounded-md md:bg-transparent xl:bg-transparent md:h-8.75 xl:h-8.75 md:rounded-none xl:rounded-none md:border-b xl:border-b pl-8 focus-visible:ring-0 focus-visible:border-gray-900 transition text-gray-900"
+        className="border-0 bg-[#F8F8F8] h-14 rounded-md pl-56 md:bg-transparent xl:bg-transparent md:h-8.75 xl:h-8.75 md:rounded-none xl:rounded-none md:border-b xl:border-b md:pl-8 focus-visible:ring-0 focus-visible:border-gray-900 transition text-gray-900"
         {...props}
       />
     </div>

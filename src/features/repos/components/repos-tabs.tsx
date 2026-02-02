@@ -19,7 +19,7 @@ export function ReposTabs() {
 
   return (
     <Tabs defaultValue="repositories" className="w-full">
-      <TabsList className="w-full flex justify-start" variant="line">
+      <TabsList className="w-full flex justify-center md:justify-start" variant="line">
         <TabsTrigger
           className="text-lg gap-3 max-w-49 h-10"
           value="repositories"
