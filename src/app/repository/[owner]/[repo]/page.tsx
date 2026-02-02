@@ -1,7 +1,7 @@
 "use client";
 
 import { CardProfile } from "@/components/layout/card-profile";
-import { useGithubRepoIssues } from "@/hooks/use-github-repo-details";
+import { useGithubRepoIssues } from "@/hooks/use-github-repo-issues";
 import { repoSelectedStore } from "@/store/repo-selected-store";
 import { ChevronRight } from "lucide-react";
 import Link from "next/link";
