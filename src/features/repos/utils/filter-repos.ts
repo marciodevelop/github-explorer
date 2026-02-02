@@ -8,14 +8,14 @@ const normalizeString = (param: string): string =>
   param.trim().toLocaleLowerCase();
 
 const createTypesPrecates = () => ({
-  forks: (repo: GithubTypes.IRepo) => repo.fork,
-  sources: (repo: GithubTypes.IRepo) => !repo.fork,
-  archived: (repo: GithubTypes.IRepo) => repo.archived,
-  mirrors: (repo: GithubTypes.IRepo) => Boolean(repo.mirror_url),
+  forks: (repo: GithubTypes.Repo) => repo.fork,
+  sources: (repo: GithubTypes.Repo) => !repo.fork,
+  archived: (repo: GithubTypes.Repo) => repo.archived,
+  mirrors: (repo: GithubTypes.Repo) => Boolean(repo.mirror_url),
 });
 
 export const filterRepos = (
-  repos: GithubTypes.IRepo[],
+  repos: GithubTypes.Repo[],
   params: IFilterParams,
 ) => {
   const { search, languages, types } = params;

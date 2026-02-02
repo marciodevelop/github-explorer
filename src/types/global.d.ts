@@ -3,34 +3,37 @@ declare namespace GithubTypes {
 
   type TabsTypes = "repositories" | "starred";
 
+  type BaseRepo = {
+    id: number;
+    name: string;
+    description: string | null;
+    stargazers_count: number;
+    forks_count: number;
+    language: string | null;
+    owner: OwnerType;
+  };
+
   type OwnerType = {
     login: string;
     avatar_url: string;
   };
 
-  type RepoSummary = {
-    id: number;
-    name: string;
-    owner: OwnerType;
-    description: string;
-    stargazers_count: number;
-    forks_count: number;
-    open_issues_count: number;
-    language: string | null;
+  interface RepoSummary extends BaseRepo {
     user: User
+    open_issues_count: number;
   };
 
   type Issue = {
-    id: number
-    title: string
-    body: string | null
-    state: "open" | "closed"
-    html_url: string
-    comments: number
-    created_at: string
-    updated_at: string
-    user: OwnerType
-  }
+    id: number;
+    title: string;
+    body: string | null;
+    state: "open" | "closed";
+    html_url: string;
+    comments: number;
+    created_at: string;
+    updated_at: string;
+    user: OwnerType;
+  };
 
   type SocialAccount = {
     provider: string;
@@ -43,11 +46,11 @@ declare namespace GithubTypes {
     company: string | null;
     location: string | null;
     blog: string | null;
-    social_accounts: SocialAcoountsTypes[];
+    social_accounts: SocialAccount[];
     bio: string | null;
   };
 
-  interface Repo {
+  interface Repo extends BaseRepo {
     id: number;
     name: string;
     fullname: string;
