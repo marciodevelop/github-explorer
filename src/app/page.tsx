@@ -1,6 +1,6 @@
 "use client";
 
-import { CardProfile } from "@/components/layout/card-profile";
+import { CardProfile } from "@/components/card-profile";
 import { ReposTabs } from "@/features/repos/components/repos-tabs";
 import { useGithubProfile } from "@/hooks/use-github-profile";
 
