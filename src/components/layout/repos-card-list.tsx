@@ -13,7 +13,7 @@ export function ReposCardList(props: IReposCardListProps) {
 
   return (
     <div className="flex flex-col gap-2.5 h-30.75 w-209.25 bg-transparent border-b border-[#F4F4F4]">
-      <p className="text-[18px] font-light">
+      <p className="text-[18px] font-light truncate">
         {ownerName} /{" "}
         <span className="font-semibold text-[#0587FF]">{name}</span>
       </p>

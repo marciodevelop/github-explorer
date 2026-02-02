@@ -6,11 +6,14 @@ import { useGithubRepos } from "@/hooks/use-github-repos";
 import { useGithubStarredRepos } from "@/hooks/use-github-starred-repos";
 import { ReposCardList } from "@/components/layout/repos-card-list";
 import { EmptyState } from "@/components/layout/empty-state";
+import { tabsColtrolStore } from "@/store/tabs-control-store";
 
 export function ReposTabs() {
+  const { activeTab, setActiveTab } = tabsColtrolStore()
   const { data, isLoading } = useGithubRepos("marciodevelop");
   const { data: starredData, isLoading: isLoadingStarred } =
-    useGithubStarredRepos("marciodevelop");
+    useGithubStarredRepos("marciodevelop", { enabled: activeTab === 'starred' });
+  
 
   const hasData = data.length > 0;
   const hasDataStarred = starredData.length > 0;
@@ -18,7 +21,7 @@ export function ReposTabs() {
   if (isLoading && isLoadingStarred) return <p>Carregando...</p>;
 
   return (
-    <Tabs defaultValue="repositories" className="w-full">
+    <Tabs defaultValue="repositories" className="w-full" onValueChange={(tab) => setActiveTab(tab)}>
       <TabsList className="w-full flex justify-center md:justify-start" variant="line">
         <TabsTrigger
           className="text-lg gap-3 max-w-49 h-10"
