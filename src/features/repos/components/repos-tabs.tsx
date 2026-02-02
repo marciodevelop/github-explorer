@@ -21,7 +21,7 @@ export function ReposTabs() {
   if (isLoading && isLoadingStarred) return <p>Carregando...</p>;
 
   return (
-    <Tabs defaultValue="repositories" className="w-full" onValueChange={(tab) => setActiveTab(tab)}>
+    <Tabs defaultValue="repositories" className="w-full" onValueChange={(tab) => setActiveTab(tab as GithubTypes.TabsTypes)}>
       <TabsList className="w-full flex justify-center md:justify-start" variant="line">
         <TabsTrigger
           className="text-lg gap-3 max-w-49 h-10"

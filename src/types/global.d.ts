@@ -1,6 +1,7 @@
 declare namespace GithubTypes {
     type TypeRepoTypes = number| string | null
 
+    type TabsTypes = 'repositories' | 'starred'
 
     type SocialAccount = {
       provider: string;

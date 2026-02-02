@@ -1,13 +1,11 @@
 import { create } from 'zustand'
 
-type TabsTypes = 'repositories' | 'starred'
-
 type FilterStoreTypes = {
-  activeTab: TabsTypes
-  setActiveTab: (tab: TabsTypes) => void
+  activeTab: GithubTypes.TabsTypes
+  setActiveTab: (tab: GithubTypes.TabsTypes) => void
 }
 
-export const tabsColtrolStore = create<FilterStoreTypes>((set, get) => ({
+export const tabsColtrolStore = create<FilterStoreTypes>((set) => ({
   activeTab: "repositories",
   setActiveTab: (activeTab) => set({ activeTab }),
 }))
