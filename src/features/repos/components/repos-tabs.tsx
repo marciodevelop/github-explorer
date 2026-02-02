@@ -3,15 +3,19 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ReposToobar } from "./repos-toolbar";
 import { ReposCounterBadge } from "./repos-counter-badge";
 import { useGithubRepos } from "@/hooks/use-github-repos";
+import { useGithubStarredRepos } from "@/hooks/use-github-starred-repos";
 import { ReposCardList } from "@/components/layout/repos-card-list";
 import { EmptyState } from "@/components/layout/empty-state";
 
 export function ReposTabs() {
   const { data, isLoading } = useGithubRepos("marciodevelop");
+  const { data: starredData, isLoading: isLoadingStarred } =
+    useGithubStarredRepos("marciodevelop");
 
   const hasData = data.length > 0;
+  const hasDataStarred = starredData.length > 0;
 
-  if (isLoading) return <p>Carregando...</p>;
+  if (isLoading && isLoadingStarred) return <p>Carregando...</p>;
 
   return (
     <Tabs defaultValue="repositories" className="w-full">
@@ -32,7 +36,7 @@ export function ReposTabs() {
         >
           <Star size={24} />
           Starred
-          <ReposCounterBadge total={5} />
+          <ReposCounterBadge total={starredData.length} />
         </TabsTrigger>
       </TabsList>
       <ReposToobar />
@@ -40,6 +44,26 @@ export function ReposTabs() {
         {hasData ? (
           <div className="flex flex-col gap-10 mt-5">
             {data.map(
+              ({ id, name, description, forks_count, language, owner }) => (
+                <ReposCardList
+                  key={id}
+                  name={name}
+                  description={description}
+                  forkCount={forks_count}
+                  language={language}
+                  ownerName={owner.login}
+                />
+              ),
+            )}
+          </div>
+        ) : (
+          <EmptyState message="Nenhum dado foi encontrado" description="" />
+        )}
+      </TabsContent>
+      <TabsContent className="w-full" value="starred">
+        {hasDataStarred ? (
+          <div className="flex flex-col gap-10 mt-5">
+            {starredData.map(
               ({ id, name, description, forks_count, language, owner }) => (
                 <ReposCardList
                   key={id}
