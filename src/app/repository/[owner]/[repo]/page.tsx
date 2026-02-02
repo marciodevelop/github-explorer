@@ -1,6 +1,6 @@
 "use client";
 import { CardProfile } from "@/components/layout/card-profile";
-import { useGithubRepoDetails } from "@/hooks/use-github-repo-details";
+import { useGithubRepoIssues } from "@/hooks/use-github-repo-details";
 import { useParams } from "next/navigation";
 
 type Params = { owner: string; repo: string };
@@ -8,7 +8,7 @@ type Params = { owner: string; repo: string };
 export default function RepositoryDetailspage() {
   const { owner, repo } = useParams<Params>();
 
-  const { data, isLoading, isError } = useGithubRepoDetails(owner, repo);
+  const { data, isLoading, isError } = useGithubRepoIssues(owner, repo);
 
   if (isLoading) return <p>Carregando...</p>;
   if (isError) return <p>erro ao carregar detalhes</p>;
@@ -42,6 +42,8 @@ export default function RepositoryDetailspage() {
           <p className="text-lg text-gray-500 font-normal">Issues abertas</p>
         </div>
       </div>
+      {data.issue.map()}
+      <div className=""></div>
     </section>
   );
 }
