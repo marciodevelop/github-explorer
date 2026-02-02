@@ -65,23 +65,23 @@ export function CardProfileInfos(props: ICardProfileInfosProps) {
   if (normalizeOptions.length === 0) return null;
 
   const InfoList = () => (
-    <ul className="mt-1 flex flex-col gap-2 w-full text-[#0587FF] text-sm bg-[#F8F8F8] md:bg-white p-4 rounded-3xl">
+    <ul className="min-w-0 mt-1 flex flex-col gap-2 w-full text-[#0587FF] text-sm bg-[#F8F8F8] md:bg-white p-4 rounded-3xl">
       {normalizeOptions.map((info) => {
         if (info.value) {
           return (
-            <li key={info.value} className="flex gap-2 text-sm">
-              <info.icon size={16} />
+            <li key={info.value} className="md:max-w-54.25 xl:max-w-62.75 flex gap-2 text-sm min-w-0">
+              <info.icon className="shrink-0" size={16} />
               {info.isLink ? (
                 <a
                   href={info.value}
                   target="_blank"
                   rel="noreferrer"
-                  className="hover:underline text-ellipsis truncate"
+                  className="min-w-0 flex-1 block hover:underline text-ellipsis truncate"
                 >
                   {info.value}
                 </a>
               ) : (
-                <span>{info.value}</span>
+                <span className="min-w-0 flex-1 block truncate">{info.value}</span>
               )}
             </li>
           );

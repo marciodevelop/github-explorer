@@ -12,7 +12,7 @@ interface IReposCardListProps {
 export function ReposCardList(props: IReposCardListProps) {
   const { description, forkCount, language, name, ownerName } = props;
 
-  const repoDetails = `/repository/${encodeURIComponent(ownerName)}/${encodeURIComponent(name)}`;
+  const repoDetails = `/repository/${ownerName}/${name}`;
 
   return (
     <Link href={repoDetails}>
