@@ -41,9 +41,10 @@ export async function getUserStarredRepos(
 }
 
 export async function getRepoDetails(
-  fullName: string,
+  owner: string,
+  repoName: string
 ): Promise<GithubTypes.Repo[]> {
-  const response = await fetch(`${BASE_URL}/repos/${fullName}`);
+  const response = await fetch(`${BASE_URL}/repos/${owner}/${repoName}`);
 
   return handleReponse<GithubTypes.Repo[]>(response);
 }
