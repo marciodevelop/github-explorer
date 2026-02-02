@@ -65,7 +65,7 @@ export function CardProfileInfos(props: ICardProfileInfosProps) {
   if (normalizeOptions.length === 0) return null;
 
   const InfoList = () => (
-    <ul className="mt-1 flex flex-col gap-2 w-full text-[#0587FF] text-sm bg-[#F8F8F8] xl:bg-white p-4 rounded-3xl">
+    <ul className="mt-1 flex flex-col gap-2 w-full text-[#0587FF] text-sm bg-[#F8F8F8] md:bg-white p-4 rounded-3xl">
       {normalizeOptions.map((info) => {
         if (info.value) {
           return (
@@ -96,7 +96,7 @@ export function CardProfileInfos(props: ICardProfileInfosProps) {
       <Collapsible
         open={isOpen}
         onOpenChange={setIsOpen}
-        className="w-full xl:hidden"
+        className="w-full md:hidden"
       >
         <CollapsibleTrigger asChild>
           <button
@@ -114,7 +114,7 @@ export function CardProfileInfos(props: ICardProfileInfosProps) {
           <InfoList />
         </CollapsibleContent>
       </Collapsible>
-      <div className="hidden xl:block">
+      <div className="hidden md:block">
         <InfoList />
       </div>
     </>
