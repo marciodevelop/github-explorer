@@ -46,7 +46,7 @@ declare namespace GithubTypes {
     company: string | null;
     location: string | null;
     blog: string | null;
-    social_accounts: SocialAccount[];
+    social_accounts: any[];
     bio: string | null;
   };
 

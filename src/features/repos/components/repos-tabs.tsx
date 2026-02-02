@@ -56,7 +56,7 @@ export function ReposTabs() {
       <TabsContent className="w-full" value="repositories">
         {hasData ? (
           <div className="flex flex-col gap-10 mt-5">
-            {data.map((repo) => (
+            {data.map((repo: any) => (
               <ReposCardList key={repo.id} repo={repo} />
             ))}
           </div>
@@ -67,7 +67,7 @@ export function ReposTabs() {
       <TabsContent className="w-full" value="starred">
         {hasDataStarred ? (
           <div className="flex flex-col gap-10 mt-5">
-            {starredData.map((repo) => (
+            {starredData.map((repo: any) => (
               <ReposCardList key={repo.id} repo={repo} />
             ))}
           </div>
