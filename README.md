@@ -1,162 +1,120 @@
-GitHub Explorer
+🚀 GitHub Explorer
 
-Aplicação web desenvolvida em Next.js que permite explorar informações públicas de usuários do GitHub, incluindo perfil, repositórios, repositórios favoritados (starred) e issues abertas, com suporte a busca e filtros no lado do cliente.
+Uma aplicação web moderna desenvolvida com Next.js que permite explorar informações públicas de usuários do GitHub. O projeto oferece uma experiência fluida para visualizar perfis, repositórios, estrelas e issues, contando com filtros avançados no lado do cliente.
 
-O foco do projeto é demonstrar qualidade de código, organização, boas práticas e clareza arquitetural.
+O foco principal deste projeto é demonstrar qualidade de código, organização arquitetural baseada em features e aplicação de padrões de design escaláveis.
 
-Requisitos de Ambiente
+📋 Requisitos de Ambiente
 
-Para melhor experiência e compatibilidade com o projeto, utilize:
+Para garantir a compatibilidade e o comportamento esperado, utilize as versões abaixo:
 
-Node.js: v24.13.0
-Recomenda-se fortemente usar exatamente essa versão.
+Node.js: v24.13.0 (Recomendado)
 
-Se você utiliza nvm:
+Se você utiliza o nvm, pode configurar o ambiente rapidamente:
 
 nvm install 24.13.0
 nvm use 24.13.0
 
-Tecnologias Utilizadas
 
-As principais tecnologias e bibliotecas utilizadas no projeto são:
+🛠️ Tecnologias Utilizadas
 
-Next.js 16.1.6
+Core
+
+Next.js 16.1.6 (App Router)
 
 React 19
 
 TypeScript
 
-TanStack React Query – gerenciamento de cache e estados assíncronos
+Gerenciamento de Estado e Dados
 
-Zustand – gerenciamento de estado global simples e previsível
+TanStack React Query: Cache e estados assíncronos.
 
-React Hook Form – controle e validação de formulários
+Zustand: Estado global simples e performático.
 
-Zod – validação e tipagem de schemas
+UI & UX
 
-Radix UI – componentes acessíveis (Tabs, Dialog, Collapsible, Checkbox)
+Tailwind CSS: Estilização utilitária.
 
-Tailwind CSS – estilização utilitária
+Radix UI: Componentes de interface acessíveis.
 
-class-variance-authority / clsx / tailwind-merge – composição e organização de classes
+Lucide React: Iconografia.
 
-Lucide React – ícones
+class-variance-authority / clsx: Gestão de variantes de CSS.
 
-Biome – lint e formatação de código
+Formulários e Validação
 
-Arquitetura do Projeto
+React Hook Form: Controle de formulários.
 
-O projeto foi estruturado com foco em separação de responsabilidades e escalabilidade, utilizando uma arquitetura baseada em features.
+Zod: Validação de schemas e tipagem.
 
-Estrutura principal
+Ferramentas de Desenvolvimento
+
+Biome: Linting e formatação ultrarrápida.
+
+🏗️ Arquitetura do Projeto
+
+O projeto segue uma estrutura baseada em features, facilitando a manutenção e o isolamento de responsabilidades.
+
 src/
- ├─ app/
- │   ├─ layout.tsx
- │   ├─ page.tsx
- │   └─ repository/
- │       └─ [owner]/
- │           └─ [repo]/
- │               └─ page.tsx
- │
- ├─ components/
- │   ├─ layout/
- │   ├─ ui/
- │   └─ shared components
- │
- ├─ features/
- │   └─ repos/
- │       ├─ components/
- │       ├─ hooks/
- │       └─ utils/
- │
- ├─ hooks/
- │   ├─ use-github-profile.ts
- │   ├─ use-github-repos.ts
- │   └─ use-github-repo-issues.ts
- │
- ├─ services/
- │   └─ github.ts
- │
- ├─ store/
- │   ├─ user-name-store.ts
- │   ├─ repo-selected-store.ts
- │   └─ tabs-control-store.ts
- │
- └─ utils/
+ ├─ app/                 # Roteamento e páginas (App Router)
+ ├─ components/          # Componentes globais (layout, ui, shared)
+ ├─ features/            # Módulos de negócio isolados (ex: repos)
+ │   ├─ components/
+ │   ├─ hooks/
+ │   └─ utils/
+ ├─ hooks/               # Hooks globais (use-github-profile, etc)
+ ├─ services/            # Integração com APIs externas (github.ts)
+ ├─ store/               # Stores do Zustand
+ └─ utils/               # Funções utilitárias globais
+
 
 Padrões e Decisões Técnicas
-Composition Pattern
 
-Os componentes principais (ex: CardProfile) foram construídos utilizando Composition Pattern, permitindo:
+🧩 Composition Pattern
 
-Melhor reutilização
+Os componentes principais, como o CardProfile, utilizam o padrão de composição para garantir flexibilidade e evitar prop drilling.
 
-APIs mais expressivas
-
-Menor acoplamento entre responsabilidades
-
-Exemplo conceitual:
-
+// Exemplo conceitual
 <CardProfile.Root>
   <CardProfile.Avatar />
   <CardProfile.Bio />
   <CardProfile.Infos />
 </CardProfile.Root>
 
-Gerenciamento de Estado
 
-Zustand foi utilizado para:
+💾 Gerenciamento de Estado
 
-Usuário ativo (username)
+Zustand: Utilizado para estados de UI e preferências (usuário ativo, abas, repositório selecionado).
 
-Repositório selecionado
+React Query: Utilizado para sincronização com a API do GitHub, garantindo cache inteligente e evitando requisições duplicadas.
 
-Controle da aba ativa (Repositories / Starred)
+✨ Funcionalidades
 
-React Query foi utilizado para:
+[x] Busca dinâmica de usuários via API do GitHub.
 
-Buscar dados da API do GitHub
+[x] Visualização detalhada de perfil.
 
-Cache e invalidação automática
+[x] Listagem de repositórios públicos e favoritados (Starred).
 
-Evitar refetch desnecessário
+[x] Filtros client-side por Linguagem e Tipo (fork, source, arquivado).
 
-Funcionalidades Implementadas
+[x] Busca de repositórios por texto em tempo real.
 
-Carregamento dinâmico de dados da API do GitHub
+[x] Página de detalhes do repositório com listagem de Issues.
 
-Exibição do perfil do usuário
+[x] Validação de campos com feedbacks visuais.
 
-Listagem de repositórios públicos
+[x] Estados de Loading e Empty States tratados.
 
-Listagem de repositórios favoritados (Starred)
-
-Contador de repositórios por aba
-
-Busca por nome de repositório (submit via Enter)
-
-Filtros client-side:
-
-Linguagem
-
-Tipo (fork, source, archived, mirror)
-
-Página de detalhes do repositório
-
-Listagem de issues abertas
-
-Validação de usuário GitHub via formulário
-
-Estados de loading e empty state
-
-Processo de Setup
+🚀 Como Iniciar
 
 Clone o repositório:
 
-git clone <url-do-repositorio>
+git clone [https://github.com/seu-usuario/github-explorer.git](https://github.com/seu-usuario/github-explorer.git)
 
 
-Acesse a pasta do projeto:
+Acesse a pasta:
 
 cd github-explorer
 
@@ -166,60 +124,33 @@ Instale as dependências:
 npm install
 
 
-Inicie o projeto em modo desenvolvimento:
+Inicie o servidor de desenvolvimento:
 
 npm run dev
 
 
-A aplicação estará disponível em:
+Acesse http://localhost:3000 no seu navegador.
 
-http://localhost:3000
+🧠 Desafios e Soluções
 
-Desafios Encontrados
+Limitações da API REST: Como a API do GitHub não permite filtrar múltiplos parâmetros (nome/tipo/linguagem) em um único endpoint de busca de usuário, implementamos a lógica de filtragem no lado do cliente após a carga inicial.
 
-Durante o desenvolvimento, alguns pontos exigiram maior atenção:
+Hydration Mismatch: Tratado através da sanitização de atributos injetados por extensões e garantia de consistência entre servidor e cliente.
 
-Limitações da API do GitHub
-Não existe endpoint específico para buscar repositórios de um usuário por nome, tipo e linguagem simultaneamente.
-A solução adotada foi buscar todos os repositórios e aplicar filtros no client.
+Dados Derivados: Cuidado rigoroso para manter o Zustand focado em UI e o React Query focado em dados do servidor, evitando redundância de estado.
 
-Hydration mismatch no Next.js
-O erro foi causado por extensões do navegador injetando atributos no DOM.
-Foi identificado, documentado e tratado adequadamente.
+🔮 Melhorias Futuras
 
-Separação entre dados derivados e estado global
-Houve cuidado para não duplicar estado entre React Query e Zustand.
+[ ] Implementação de Paginação Infinita (Infinite Scroll).
 
-Possíveis Melhorias Futuras
+[ ] Adição de Suspense e Error Boundaries para melhor UX.
 
-Algumas evoluções possíveis para o projeto:
+[ ] Cobertura de testes unitários e de integração (Cypress/Vitest).
 
-Implementação de paginação infinita
+[ ] Persistência de temas (Dark/Light Mode).
 
-Uso de Suspense e Error Boundaries
+[ ] Tratamento refinado de Rate Limit da API do GitHub.
 
-Testes automatizados (unitários e de integração)
+📄 Considerações Finais
 
-Persistência de preferências do usuário
-
-Melhor tratamento de rate limit da API do GitHub
-
-Memoização mais agressiva em listas grandes
-
-Melhor refinamento visual para estados vazios
-
-Considerações Finais
-
-Este projeto foi desenvolvido priorizando:
-
-Clareza de código
-
-Boas práticas
-
-Simplicidade (KISS)
-
-Evitar abstrações desnecessárias (YAGNI)
-
-Reutilização e consistência (DRY)
-
-Todas as decisões técnicas foram tomadas de forma consciente e podem ser explicadas em detalhe, conforme solicitado no desafio.
+Este projeto foi desenvolvido aplicando os princípios KISS (Keep It Simple, Stupid), YAGNI (You Ain't Gonna Need It) e DRY (Don't Repeat Yourself), buscando um equilíbrio entre funcionalidade e simplicidade técnica.
