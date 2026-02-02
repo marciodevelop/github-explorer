@@ -42,7 +42,7 @@ export default function RepositoryDetailspage() {
           <p className="text-lg text-gray-500 font-normal">Issues abertas</p>
         </div>
       </div>
-      {data.issue.map()}
+      
       <div className=""></div>
     </section>
   );
